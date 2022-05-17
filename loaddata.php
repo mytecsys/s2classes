@@ -1,5 +1,6 @@
 <?php 
 include 'function.php';
+$now=date('Y-m-d');
 
 if($_REQUEST['action']=="add_user"){                    
 
@@ -149,4 +150,56 @@ if($_REQUEST['action']=="del_group"){
 }
 
 
+// =====================add nutrition======================
+if($_REQUEST['action']=="add_nutrition"){
+  $query="INSERT INTO `tbl_nutrition`(`id`,`name`,`pdf`,`groups`,`created_at`) VALUES
+   (NULL,'".$_REQUEST['name']."','".$_REQUEST['pdf']."','".$_REQUEST['groups']."','".$_REQUEST['q_date']."')";
+    $result = mysqli_query($con, $query);
+      if($result ){  
+       header('location:nutrition.php');
+      }else{
+        echo "something went wrong";
+        echo mysqli_error($con);
+      }
+}
+
+// =================edit nutrition=================
+if ($_REQUEST['action']=="view_one_nutrition"){
+  // $table = $_REQUEST['table'];
+$id = $_REQUEST['id'];
+// echo $id; 
+
+
+   $query='SELECT * from `tbl_nutrition` where `id`='.$id;
+  $result=$con -> query($query);
+  $row =$result->fetch_assoc();
+             
+             $array[]=   $row['name'];
+             $array[]=   $row['pdf'];
+             $array[]=   $row['alloted'];
+             $array[]=   $row['created_at'];
+                 
+           echo  json_encode($array);
+}
+           if ($_REQUEST['action']=="update_nutrition"){
+                   
+
+         $query="UPDATE `tbl_nutrition` SET `name`='".$_REQUEST['name']."',`pdf`='".$_REQUEST['pdf']."',`status`='".$_REQUEST['groups']."',`created_at`='".$_REQUEST['q_date']."' WHERE `id`='".$_REQUEST['id']."'";
+
+             $result = mysqli_query($con, $query);
+
+                          if($result){
+                echo "success";
+                 header('Location:nutrition.php');
+              }else{
+                echo "failed";
+              }
+   }   
+// =============delete nutrition========================
+
+   if($_REQUEST['action']=="del_nutrition"){
+  $query="DELETE FROM `tbl_nutrition` WHERE id=".$_REQUEST['id'];
+  $result=mysqli_query($con,$query);
+  header('location:nutrition.php');
+}
  ?>
