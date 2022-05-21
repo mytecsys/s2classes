@@ -134,6 +134,18 @@ include("header.php");
                     </div>
                   </div>
                   <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Wt.Before Meal</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="inputEmail3" placeholder="KG" name="b_weight">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Wt.Post Meal</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="inputEmail3" placeholder="KG" name="p_weight">
+                    </div>
+                  </div>
+                  <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Height</label>
                     <div class="col-sm-10">
                       <input type="number" class="form-control" id="inputPassword3" placeholder="Centimeter" name="height">
@@ -172,6 +184,15 @@ include("header.php");
                       <input type="number" class="form-control" id="inputPassword3" placeholder="percentage" name="fat">
                     </div>
                   </div>
+                  <div class="row form-group">
+                      <div class="col col-md-2">
+                          <label for="file-input" class=" form-control-label">Food Track :</label>
+                       </div>
+                         <div class="col-12 col-md-4">
+                           <input type="file" id="file-input"  name="s_track" class="form-control-file">
+                          
+                       </div>
+                 </div> 
 
 </div>
 

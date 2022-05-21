@@ -34,89 +34,17 @@ include("header.php");
                 <table id="workout_table" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Days</th>
-                    <th>Activity</th>
-                    <th>Sets</th>
-                    <th>Reps</th>
-                    <th>KG</th>
-                    <th>Resttime</th>
-                    <th> Button</th>
+                    <th>Day</th>
+                    <th>Workout</th>
+                    <th>Link</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
                     <td>sunday</td>
                     <td>Yoga</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > Meeting</button>
-                  </td>
-                   
+                <td><a href="https://meet.google.com/" target="_blank"><i class="fas fa-video" style="font-size: 25px;"></i></a></td>
                   </tr>
-                  <tr>
-                    <td>Monday</td>
-                    <td>Zumba</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting >Meeting</button>
-                  </td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Tuesday</td>
-                    <td>Yoga</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > Meeting</button>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>Wednesday</td>
-                    <td>Yoga</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > Meeting</button>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>Thursday</td>
-                    <td>Yoga</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > Meeting</button>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>Friday</td>
-                    <td>Yoga</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > Meeting</button>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>Saturday</td>
-                    <td>Yoga</td>
-                    <td>10</td>
-                    <td>3</td>
-                    <td>42</td>
-                    <td>5</td>
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > Meeting</button>
-                  </td>
-                  </tr>
-
                   </tbody>
                 </table>
               </div>

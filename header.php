@@ -132,7 +132,7 @@ if(!isset($_SESSION['id'])){
             <a href="groups.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Groups
+                Batches
                 
               </p>
             </a>
@@ -161,7 +161,7 @@ if(!isset($_SESSION['id'])){
               
               <i class=" nav-icon fab fa-nutritionix"></i>
               <p>
-                Nutrition
+                Meal
                 
               </p>
             </a>
@@ -221,7 +221,7 @@ if(!isset($_SESSION['id'])){
               
               <i class=" nav-icon fab fa-nutritionix"></i>
               <p>
-                Nutrition
+                Meal
                 
               </p>
             </a>

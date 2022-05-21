@@ -1,45 +1,28 @@
-<div class="modal fade" id="add_nutrition">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add Nutrition</h4>
-               <form action="loaddata.php" method="post">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-            <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+ <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Member</label>
                     <div class="col-sm-10">
-                      <input type="Text" class="form-control" id="name" placeholder="Name" name="title">
-                    </div>
-                  </div>
+                      <select onchange="member()" id="nutri_alot" class="form-control select2" name="alloted"  style="width: 100%;">
+                        <?php 
+                        $query="SELECT * FROM tbl_user WHERE is_delete=0";
+                           $result= $con -> query($query);
+                           $i=1;
+                           
+                            while($row = $result -> fetch_object()){
 
-                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Pdf</label>
-                    <div class="col-sm-10">
-                      <input type="File" class="form-control" id="name" placeholder="Pdf" name="title">
-                    </div>
-                  </div>
-
-                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label"> Member</label>
-                    <div class="col-sm-10">
-                      <select class="form-control select2" style="width: 100%; height: 28px;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option disabled="disabled">California (disabled)</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                              $name=$row ->first_name." ".$row->middle_name." ".$row->last_name;
+                        ?>
+                       
+                    <option  value="<?php echo $row ->id; ?>"><?php echo $name; ?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                     ?>
                   </select>
                     </div>
 
                   </div>
-                                    <div class="form-group row">
+                    <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
                        
@@ -47,33 +30,169 @@
                     </div>
 
                   </div>
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Group</label>
-                    <div class="col-sm-10">
-                        <select class="form-control select2" style="width: 100%; ">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option disabled="disabled">California (disabled)</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                  <div class="form-group row" >
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Select Group</label>
+                    <div class="col-sm-10" >
+                        <select onchange="group()" id="nutri_alot1" class="form-control select2" name="alloted"  style="width: 100%; ">
+                    <?php 
+                        $query="SELECT * FROM tbl_groups ";
+                           $result= $con -> query($query);
+                           $i=1;
+                            while($row = $result -> fetch_object()){
+                        ?>
+                       
+                    <option value="<?php echo $row ->id; ?>"><?php echo $row ->title;?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                      // echo $row -> id;
+                     // exit();
+                     ?>
                   </select>
                     </div>
 
                   </div>
 
-               </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="hidden" name="action" value="add_nutrition">
-              <!-- <input type="hidden" name="id" id="row_id"> -->
-              <button type="submit" class="btn btn-primary">Save</button>
-            </form>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
+                  Group: <?php echo fetch_extra_data('tbl_groups','title','id',$row->group) ;?>
+
+
+
+<!-- <div class="form-group row" id="nutri_alot2" style="display:none">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Member</label>
+                    <div class="col-sm-10">
+                      <select id="member_edit_nutri" class="form-control select2" name="member"  style="width: 100%;">
+                        <?php 
+                        $query="SELECT * FROM tbl_user WHERE is_delete=0";
+                           $result= $con -> query($query);
+                           $i=1;
+                           
+                            while($row = $result -> fetch_object()){
+
+                              $name=$row ->first_name." ".$row->middle_name." ".$row->last_name;
+                        ?>
+                       
+                    <option  value="<?php echo $row ->id; ?>"><?php echo $name; ?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                     ?>
+                  </select>
+                    </div>
+
+                  </div> -->
+                  <!-- <div class="form-group row" id="nutri_alot3" style="display:none">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Select Group</label>
+                    <div class="col-sm-10" >
+                        <select id="group_edit_nutri" class="form-control select2" name="group"  style="width: 100%; ">
+                    <?php 
+                        $query="SELECT * FROM tbl_groups ";
+                           $result= $con -> query($query);
+                           $i=1;
+                            while($row = $result -> fetch_object()){
+                        ?>
+                       
+                    <option value="<?php echo $row ->id; ?>"><?php echo $row ->title;?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                      // echo $row -> id;
+                     // exit();
+                     ?>
+                  </select>
+                    </div>
+
+                  </div> -->
+
+
+                  <!-- <select class="form-control"  id="alloted">
+                          <option value="">Select</option>
+                            <option value="Member">Member</option>
+                              <option value="Group">Group</option>     </select>  --> 
+
+                               <!-- <div class="form-group row" id="nutri_alot" style="display:none">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Member</label>
+                    <div class="col-sm-10">
+                      <select id="nutri_alot" class="form-control select2" name="member"  style="width: 100%;">
+                        <?php 
+                        $query="SELECT * FROM tbl_user WHERE is_delete=0";
+                           $result= $con -> query($query);
+                           $i=1;
+                           
+                            while($row = $result -> fetch_object()){
+
+                              $name=$row ->first_name." ".$row->middle_name." ".$row->last_name;
+                        ?>
+                       
+                    <option  value="<?php echo $row ->id; ?>"><?php echo $name; ?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                     ?>
+                  </select>
+                    </div>
+
+                  </div> -->
+                  <!-- <div class="form-group row" id="nutri_alot1" style="display:none">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Select Group</label>
+                    <div class="col-sm-10" >
+                        <select id="nutri_alot1" class="form-control select2" name="group"  style="width: 100%; ">
+                    <?php 
+                        $query="SELECT * FROM tbl_groups ";
+                           $result= $con -> query($query);
+                           $i=1;
+                            while($row = $result -> fetch_object()){
+                        ?>
+                       
+                    <option value="<?php echo $row ->id; ?>"><?php echo $row ->title;?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                      // echo $row -> id;
+                     // exit();
+                     ?>
+                  </select>
+                    </div>
+
+                  </div> -->
+
+
+                  // ============add select=====================
+//    $('#alloted').on('change', function() {
+//   // alert( this.value );
+//   if(this.value=="Member"){
+// $('#nutri_alot').show();
+//   }else{
+//     $('#nutri_alot1').disable();
+//   }
+// });
+//    $('#alloted').on('change', function() {
+//   // alert( this.value );
+//   if(this.value=="Group"){
+// $('#nutri_alot1').show();
+//   }else{
+//     $('#nutri_alot').disable();
+//   }
+// });
+
+// ============edit select=====================
+//    $('#alloted').on('change', function() {
+//   // alert( this.value );
+//   if(this.value=="Member"){
+// $('#member_edit_nutri').show();
+//   }else{
+//     $('#group_edit_nutri').disable();
+//   }
+// });
+//    $('#alloted').on('change', function() {
+//   // alert( this.value );
+//   if(this.value=="Group"){
+// $('#group_edit_nutri').show();
+//   }else{
+//     $('#member_edit_nutri').disable();
+//   }
+// });

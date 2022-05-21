@@ -8,7 +8,7 @@ include("header.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Payment</h1>
+            <h1 class="m-0">Nutrition</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -42,71 +42,23 @@ include("header.php");
                   </tr>
                   </thead>
                   <tbody>
+                    <?php 
+              $query="SELECT * FROM `tbl_nutrition` ORDER BY `created_at` DESC";
+                $result=$con -> query($query);
+                $i=1;
+              while($row = $result->fetch_object()){ 
+               ?>
                   <tr>
-                    <td>1</td>
-                    <td>13/5/22</td>
-                    <td>1000</td>
-                    
-                    <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > View</button>
-                  </td>
-                   
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>8/5/22</td>
-                    <td>1200</td>
-                    
-                    <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting >View</button>
-                  </td>
-                    
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>5/3/22</td>
-                    <td>1000</td>
-                    
-                    
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > View</button>
+                    <td><?php echo $i; ?></td>
+                    <td><?php  $date = strtotime($row->created_at);
+                      echo date('d-m-Y', $date);  ?></td>
+                    <td> Batch: <?php echo fetch_extra_data('tbl_groups','title','id',$row->group) ;?></td>
+                    <td><a href="gym/nutrition_pdf/<?php echo $row->pdf ?>" target="_blank"><i class="fas fa-file-pdf" style="font-size: 25px;"></i></a>
                   </td>
                   </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>30/4/22</td>
-                    <td>1000</td>
-                    
-                    
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > View</button>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>5/6/22</td>
-                    <td>1000</td>
-                   
-                    
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > View</button>
-                  </td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>4/5/22</td>
-                    <td>1000</td>
-                    
-                    
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > View</button>
-                  </td>
-                    
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>12/5/22</td>
-                    <td>1000</td>
-                    
-                    
-                  <td><button class="btn btn-success"  style="float:right ; 225px;"Meeting > View</button>
-                  </td>
-                  </tr>
-
+                  <?php 
+                   $i++;
+                   } ?>
                   </tbody>
                 </table>
               </div>

@@ -92,19 +92,27 @@ $row1=$result1-> fetch_object();
 
                     
 <div class="form-group row">
-  <label class="control-label col-md-2" for="assign_group">Group</label>
+  <label class="control-label col-md-2" for="assign_group">Batch</label>
   <div class="col module_padding">
     <!--<input type="hidden" name="assign_group" value="<?php echo $row->group ?>">-->
   <div class="form-group">
                   
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                  <select class="form-control select2" name="group" id="nutri_alot1" style="width: 100%; ">
+                    <?php 
+                        $query="SELECT * FROM tbl_groups ";
+                           $result= $con -> query($query);
+                           $i=1;
+                            while($row = $result -> fetch_object()){
+                        ?>
+                       
+                    <option value="<?php echo $row ->id; ?>"><?php echo $row ->title;?></option>
+                    
+                    <?php  
+                      $i++;
+                        }
+                      // echo $row -> id;
+                     // exit();
+                     ?>
                   </select>
                 </div>
     

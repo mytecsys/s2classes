@@ -8,12 +8,12 @@ include("header.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Groups</h1>
+            <h1 class="m-0">Batches</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Groups v1</li>
+              <li class="breadcrumb-item active">Batches v1</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,7 +28,7 @@ include("header.php");
               <div class="card-header">
                 <div class="card-header">
 
-               <button type="btn" class="btn btn-success"  style="float:right ; 225px;" data-toggle="model" data-target="#add_group" onclick="add_group();">Add groups </button>
+               <button type="btn" class="btn btn-success"  style="float:right ; 225px;" data-toggle="model" data-target="#add_group" onclick="add_group();">Add Batches </button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -36,8 +36,8 @@ include("header.php");
                   <thead>
                   <tr>
                     <th>SN</th>
-                    
                     <th>Title</th>
+                    <th>Link</th>
                     <th>No of Members</th>
                     <th>Action</th>
                     
@@ -49,22 +49,18 @@ include("header.php");
 $result=$con-> query($query);
 $i=1;
 while($row=$result-> fetch_object()) {
+  $query1="SELECT count(*) as cnt FROM `tbl_user` WHERE `group`=".$row->id;
+  $result1=$con->query($query1);
+  $row1 = $result1 -> fetch_object();
   ?>
  <tr>
   <td><?php echo $i; ?></td>
-<td> <?php echo $row ->title; ?></td>
-<td> <?php echo 0; ?></td>
-
-
-
-
-
-  
-  <td>
-           
-    <a onclick="edit_group('<?php echo $row->id ?>','<?php echo $row->title ?>' )" class="btn btn-success"> <i class="fa fa-edit">
+<td><?php echo $row ->title; ?></td>
+<td><a href="<?php echo $row->link ?>" target="_blank"><i class="fas fa-video"></i></a></td>
+<td><?php echo $row1->cnt; ?></td>
+  <td><a onclick="edit_group('<?php echo $row->id ?>','<?php echo $row->title ?>' )" class="btn btn-success"> <i class="fa fa-edit">
     </i></a>
-   <a  class="btn btn-danger" onclick="del_group('<?php echo $row ->id; ?>')">
+   <a class="btn btn-danger" onclick="del_group('<?php echo $row ->id; ?>')">
           <i class="fa fa-trash"></i>
      </a> 
 
@@ -96,7 +92,7 @@ while($row=$result-> fetch_object()) {
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Group</h4>
+              <h4 class="modal-title">Add Batch</h4>
                <form action="loaddata.php" method="post">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -105,12 +101,19 @@ while($row=$result-> fetch_object()) {
             <div class="modal-body">
             <div class="card-body">
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label"> Name</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
                       <input type="Text" class="form-control" id="name" placeholder="Name" name="title">
                     </div>
                   </div>
-
+               </div>
+               <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Link</label>
+                    <div class="col-sm-10">
+                    <input type="nav-link" class="form-control" id="link" placeholder="Link" name="link">
+                    </div>
+                  </div>
                </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -131,7 +134,7 @@ while($row=$result-> fetch_object()) {
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Group</h4>
+              <h4 class="modal-title">Edit Batch</h4>
                <form action="loaddata.php" method="post">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -145,8 +148,15 @@ while($row=$result-> fetch_object()) {
                       <input type="Text" class="form-control" id="title_edit" placeholder="Name" name="title">
                     </div>
                   </div>
-            
                </div>
+               <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Link</label>
+                    <div class="col-sm-10">
+                    <input type="nav-link" class="form-control" id="link_edit" placeholder="Link" name="link">
+                    </div>
+                  </div>
+               </div> 
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -175,6 +185,7 @@ $('#add_group').modal('show');
     // alert(title)
      $('#edit_group').modal('show');
      $('#title_edit').val(title)
+      $('#link_edit').val(link)
       $('#row_id').val(id)
        }
 

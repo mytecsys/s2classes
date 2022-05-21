@@ -32,9 +32,9 @@ include("header.php");
               <div class="inner">
                 <h3>150</h3>
 
-                <p> Total members</p>              </div>
+                <p>Total members</p>              </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fas fa-user"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -44,12 +44,12 @@ include("header.php");
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>3<sup style="font-size: 20px"></sup></h3>
 
                 <p>Total Groups</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fas fa-users"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -59,12 +59,12 @@ include("header.php");
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>123</h3>
 
-                <p> Total income</p>
+                <p>Total Attendance</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-user-check"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -74,12 +74,12 @@ include("header.php");
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>₹65000</h3>
 
-                <p>Total outstanding</p>
+                <p>Payments</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fas fa-money-check"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
