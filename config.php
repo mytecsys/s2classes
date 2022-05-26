@@ -8,7 +8,7 @@ $host = "localhost"; /* Host name */
 if($_SERVER['SERVER_NAME']=="localhost"){
 	// ===================local credentials===================
 $user = "root";
-$password = "root";
+$password = "";
 $dbname = "gym";
 	}else{
 		// =================server credentials==============

@@ -7,12 +7,12 @@ include("header.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nutrition</h1>
+            <h1>Meal</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Nutrition</li>
+              <li class="breadcrumb-item active">Meal</li>
             </ol>
           </div>
         </div>
@@ -29,7 +29,7 @@ include("header.php");
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"></h3>
-                <button class="btn btn-success float-right"  data-toggle="modal" data-target="#add_nutrition">Add Nutrition</button>
+                <button class="btn btn-success float-right"  data-toggle="modal" data-target="#add_nutrition">Add Meal</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -89,7 +89,7 @@ include("header.php");
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Nutrition</h4>
+              <h4 class="modal-title">Add Meal</h4>
                <form action="loaddata.php" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <input type="hidden" name="action" value="add_nutri">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -157,7 +157,7 @@ include("header.php");
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Nutrition</h4>
+              <h4 class="modal-title">Edit Meal</h4>
                <form action="loaddata.php" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <input type="hidden" name="action" value="add_nutri">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">

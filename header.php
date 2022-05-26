@@ -137,17 +137,17 @@ if(!isset($_SESSION['id'])){
               </p>
             </a>
           </li>
-           <li class="nav-item">
+        <!--    <li class="nav-item">
             <a href="exercise.php" class="nav-link">
                 <i class="nav-icon fas fa-running"></i>
-              <!--<i class="nav-icon fas fa-dumbbell"></i>-->
+              <i class="nav-icon fas fa-dumbbell"></i>
               <p>
                 Exercise
                 
               </p>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a href="workout.php" class="nav-link">
               <i class="nav-icon fas fa-dumbbell"></i>
               <p>
@@ -155,7 +155,7 @@ if(!isset($_SESSION['id'])){
                 
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="nutrition.php" class="nav-link">
               

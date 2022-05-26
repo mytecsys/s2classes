@@ -117,7 +117,7 @@ include("header.php");
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Transfoation</h4>
+              <h4 class="modal-title">Add Transformation</h4>
                <form action="loaddata.php" method="post">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -195,6 +195,8 @@ include("header.php");
                  </div> 
 
 </div>
+
+<div style="border:solid ;"> Add attachment of collage of food eaten all day. </div>
 
                </div>
             </div>

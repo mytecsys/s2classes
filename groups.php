@@ -56,7 +56,7 @@ while($row=$result-> fetch_object()) {
  <tr>
   <td><?php echo $i; ?></td>
 <td><?php echo $row ->title; ?></td>
-<td><a href="<?php echo $row->link ?>" target="_blank"><i class="fas fa-video"></i></a></td>
+<td><a href="<?php echo $row->link ?>" class="btn btn-success" >Join</a></td>
 <td><?php echo $row1->cnt; ?></td>
   <td><a onclick="edit_group('<?php echo $row->id ?>','<?php echo $row->title ?>' )" class="btn btn-success"> <i class="fa fa-edit">
     </i></a>
