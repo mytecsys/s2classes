@@ -43,7 +43,7 @@ include("header.php");
                   <tr>
                     <td>sunday</td>
                     <td>Yoga</td>
-                <td><a href="https://meet.google.com/" class="btn btn-success">Join</a></td>
+                <td><a href="loaddata.php?action=attendance&user_id=<?php echo $row ->id; ?>" class="btn btn-success" >Join Meeting</a></td>
                   </tr>
                   </tbody>
                 </table>

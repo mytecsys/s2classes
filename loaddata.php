@@ -170,4 +170,53 @@ if($_REQUEST['action']=="del_nutri"){
   $result=mysqli_query($con,$query);
   header('location:nutrition.php');
 }
+
+// =============================== attendance===========================
+
+if($_REQUEST['action']=="attendance"){
+ $query="SELECT * FROM `tbl_attendance` where `date`='".date('Y-m-d')."' AND `user_id`='".$_SESSION['id']."' ";
+ $result=mysqli_query($con,$query);
+  if(mysqli_num_rows( $result )==0) {
+  // code...
+
+ $query="INSERT INTO `tbl_attendance` (`id`, `date`, `time`, `user_id`) VALUES (null, '".date('Y-m-d')."', '".date('H:I:S')."','".$_SESSION['id']."')";
+
+ $result=mysqli_query($con,$query);
+}
+ header('location:userworkout.php');
+
+
+}
+
+
+
+
+
+// =============================== workout===========================
+
+ if($_REQUEST['action']=="save_workout"){
+  // print_r($_REQUEST['arr1']);
+   // print_r($_REQUEST['arr3']);
+   //  print_r($_REQUEST['sets']);
+   //   print_r($_REQUEST['reps']);
+   //    print_r($_REQUEST['kg']);
+   //     print_r($_REQUEST['rest_time']);
+
+       foreach ($_REQUEST['arr3'] as $key => $value) {
+         
+         // echo $value;
+         // echo $_REQUEST['sets'][$key];
+         //   echo $_REQUEST['reps'][$key];
+         //     echo $_REQUEST['kg'][$key];
+         //       echo $_REQUEST['rest_time'][$key];
+
+         // echo $key; 
+               $query="INSERT INTO `tbl_exercise`(`id`, `activity`, `sets`, `reps`, `rest_time`, `kg`) VALUES (null,'".$value."','".$_REQUEST['sets'][$key]."','".$_REQUEST['reps'][$key]."','".$_REQUEST['kg'][$key]."','".$_REQUEST['rest_time'][$key]."')";
+            $result=mysqli_query($con,$query);
+           $last_id[] = $con->insert_id;
+       }
+  
+  print_r($last_id);
+ }
+
  ?>

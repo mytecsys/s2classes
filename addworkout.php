@@ -139,7 +139,7 @@ include("header.php");
                              <label for="inputPassword3" class="col-form-label">Saturday </label>
                              <br>
 
-                             <div style="margin-top:25px; " class="col-md-2"><a href="#" class="btn btn-flat btn-success" onclick="add_workout();"> Add Exercise  </a>
+                             <div style="margin-top:25px; " class="col-md-2"><a href="#" class="btn btn btn-success" onclick="add_workout();"> Add Exercise  </a>
             </div>
                         </div>
                         
@@ -205,7 +205,8 @@ include("header.php");
 
 
 </table>
-                    
+              <div style="float:right;"><a href="#" class="btn btn btn-success" onclick="save_workout();"> Save  </a>
+            </div>                    
 
 
 </section>
@@ -269,25 +270,25 @@ include("footer.php");
       function add_workout(){
   // alert('testing')
   var i=0; 
-     var arr1 = [];
+      window. arr1 = [];
      $('.ckbox:checked').each(function (){
       arr1[i++] = $(this).val();
      });
 
-     var i=0; 
-     var arr2 = [];
-     var arr3 = [];
-     var sets = [];
-     var reps = [];
-     var kg = [];
-     var rest_time = [];
+      var i=0; 
+      window.arr2 = [];
+      window.arr3 = [];
+      window.sets = [];
+      window.reps = []; window.
+      window.kg = [];
+     window.rest_time = [];
      $('.exercise_ckbox:checked').each(function (){
-      arr2[i] = $(this).val();
-       arr3[i] = $(this).attr("id");
-       sets[i] = $("#"+$(this).attr("id")+"sets").val();
-       reps[i] = $("#"+$(this).attr("id")+"reps").val();
-       kg[i] = $("#"+$(this).attr("id")+"kg").val();
-       rest_time[i] = $("#"+$(this).attr("id")+"rest_time").val();
+       window.arr2[i] = $(this).val();
+        window.arr3[i] = $(this).attr("id");
+        window.sets[i] = $("#"+$(this).attr("id")+"sets").val();
+        window.reps[i] = $("#"+$(this).attr("id")+"reps").val();
+        window.kg[i] = $("#"+$(this).attr("id")+"kg").val();
+        window.rest_time[i] = $("#"+$(this).attr("id")+"rest_time").val();
        i++;
      });
     
@@ -328,6 +329,22 @@ $(".reset_form_ex").prop('checked', false);
      //    }
 
      // });
+ }
+ function save_workout(){
+  // alert('test')
+
+  console.log();
+     $.ajax({
+      data: {action:"save_workout",arr1: window.arr1, arr3: window.arr3, sets: window.sets, reps: window.reps, kg: window.kg, rest_time: window.rest_time },
+      type: "post",
+      url: "loaddata.php",
+      crossDomain: true,
+      success: function(dataResult){
+         // location.reload();
+          console.log(dataResult)
+        }
+
+     });
  }
 
 
