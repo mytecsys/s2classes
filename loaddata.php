@@ -183,10 +183,16 @@ if($_REQUEST['action']=="attendance"){
 
  $result=mysqli_query($con,$query);
 }
- header('location:userworkout.php');
+
+ $query="SELECT * from `tbl_user` WHERE `id`='".$_SESSION['id']."'";
+ $result=mysqli_query($con,$query);
+ $row =$result->fetch_assoc();
+ // $row['group'];
+ header('location:userworkout.php?id='.$row['group']);
 
 
 }
+
 
 
 

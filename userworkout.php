@@ -1,5 +1,15 @@
 <?php 
 include("header.php");
+if (isset($_REQUEST['id'])) {
+  // code...
+ echo $query="SELECT * FROM `tbl_groups` WHERE `id`='".$_REQUEST['id']."'";
+   $result=mysqli_query($con,$query);
+   $row =$result->fetch_assoc();
+   $row['link'];
+   $url="https://meet.google.com";
+   echo ("<script>location.href='$url'</script>");
+}
+
  ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -43,7 +53,7 @@ include("header.php");
                   <tr>
                     <td>sunday</td>
                     <td>Yoga</td>
-                <td><a href="loaddata.php?action=attendance&user_id=<?php echo $row ->id; ?>" class="btn btn-success" >Join Meeting</a></td>
+                <td><a href="loaddata.php?action=attendance&user_id=<?php echo $row ->id; ?>" class="btn btn-success"  >Join Meeting</a></td>
                   </tr>
                   </tbody>
                 </table>
