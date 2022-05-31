@@ -15,7 +15,7 @@ include("header.php");
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Users v1</li>
+              <li class="breadcrumb-item active">Users </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,6 +30,7 @@ include("header.php");
           <div class="card-header">
             <div class="card-header">
                 <a href="adduser.php" class="btn btn-success"  style="float:right ; 225px;">Add User</a>
+                  <button type="btn" class="btn btn-success"  style="float:left ;" data-toggle="model" data-target="#send_notification" onclick="send_notification();">Send Notification </button>
               </div>
                 
               <!-- /.card-header -->
@@ -83,44 +84,8 @@ while($row=$result-> fetch_object()) {
 ?>
 
 
-                 <!--  <tr>
-                    <td>1</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    <td></td>
-                    <td><a href="/dasinfoau/php/gym/GymMember/viewMember/3" title="View" class="btn btn-flat btn-info"><i class="fa fa-eye"></i></a><a href="#" title="Edit" class="btn btn-flat btn-primary" disabled="disabled"><i class="fa fa-edit"></i></a><a href="#" title="Delete" class="btn btn-flat btn-danger" disabled="disabled"><i class="fa fa-trash"></i></a></td>
-                    <td><a class="btn btn-success btn-flat" onclick="return confirm('Are you sure,You want to activate this account?');" href="/dasinfoau/php/gym/GymMember/activateMember/4" style="background: rgb(175, 29, 29); border-color: rgb(175, 29, 29);">Activate</a></<a class="btn btn-success btn-flat" onclick="return confirm('Are you sure,You want to activate this account?');" href="/dasinfoau/php/gym/GymMember/activateMember/4" style="background: rgb(175, 29, 29); border-color: rgb(175, 29, 29);"</a>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                    <td></td>
-                    <td><a href="/dasinfoau/php/gym/GymMember/viewMember/3" title="View" class="btn btn-flat btn-info"><i class="fa fa-eye"></i></a><a href="#" title="Edit" class="btn btn-flat btn-primary" disabled="disabled"><i class="fa fa-edit"></i></a><a href="#" title="Delete" class="btn btn-flat btn-danger" disabled="disabled"><i class="fa fa-trash"></i></a></td>
-                    <td><a class="btn btn-success btn-flat" onclick="return confirm('Are you sure,You want to activate this account?');" href="/dasinfoau/php/gym/GymMember/activateMember/4" style="background: rgb(175, 29, 29); border-color: rgb(175, 29, 29);">Activate</a></<a class="btn btn-success btn-flat" onclick="return confirm('Are you sure,You want to activate this account?');" href="/dasinfoau/php/gym/GymMember/activateMember/4" style="background: rgb(175, 29, 29); border-color: rgb(175, 29, 29);"</a>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Internet
-                      Explorer 5.5
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5.5</td>
-                    <td>A</td>
-                    <td></td>
-                    <td><a href="/dasinfoau/php/gym/GymMember/viewMember/3" title="View" class="btn btn-flat btn-info"><i class="fa fa-eye"></i></a><a href="#" title="Edit" class="btn btn-flat btn-primary" disabled="disabled"><i class="fa fa-edit"></i></a><a href="#" title="Delete" class="btn btn-flat btn-danger" disabled="disabled"><i class="fa fa-trash"></i></a></td>
-                    <td><a class="btn btn-success btn-flat" onclick="return confirm('Are you sure,You want to activate this account?');" href="/dasinfoau/php/gym/GymMember/activateMember/4" style="background: rgb(175, 29, 29); border-color: rgb(175, 29, 29);">Activate</a></<a class="btn btn-success btn-flat" onclick="return confirm('Are you sure,You want to activate this account?');" href="/dasinfoau/php/gym/GymMember/activateMember/4" style="background: rgb(175, 29, 29); border-color: rgb(175, 29, 29);"</a>
-                  </tr>
-
-                  </tfoot> -->
+                 
+                 
                 </tbody>
                 </table>
               </div>
@@ -138,11 +103,53 @@ while($row=$result-> fetch_object()) {
   </div>
   <!-- /.content-wrapper -->
 
-     
+   <div class="modal fade" id="send_notification">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Send Notification</h4>
+               <form action="loaddata.php" method="post">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label"> Notifications</label>
+                    <div class="col-sm-10">
+                      <textarea  type="text" class="form-control" id="notifications" placeholder="" name="notification"></textarea>
+                    </div>
+                  </div>
+               </div>
+               
+              
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <input type="hidden" name="action" value="edit_group">
+              <input type="hidden" name="id" id="row_id">
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>   
+
+
+
+
  <?php 
 include("footer.php");
  ?>
  <script type="text/javascript">
+
+function send_notification(){
+  // alert('test');
+  $('#send_notification').modal('show');
+}
    
    function del(id) {
         // alert(id)

@@ -1,6 +1,64 @@
 <?php 
 include 'function.php';
 $now=date('Y-m-d');
+
+if($_REQUEST['action']=="view_member_under_batch"){
+  ?>
+
+  <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                     
+                    <th>Sr</th>
+                    <th>Member name</th>
+                    <th>Attendance</th>
+                    
+                                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php 
+                 
+     $query="SELECT * from `tbl_user` where  `is_delete`!=1  AND `group`=".$_REQUEST['id']; 
+                      $result= $con -> query($query);
+                      $i=1;
+
+     
+
+         while($row = $result -> fetch_object()){
+
+            $query1="SELECT * FROM `tbl_attendance` where `user_id` = '".$row ->id."' AND `date`='".date('Y-m-d')."'";   
+           $result1= $con -> query($query1);
+           $row1 = $result1 -> fetch_object();
+                        ?>
+
+                  <tr>
+                  
+                      <td><?php echo $i; ?></td>
+                      <td> <?php echo $row ->first_name; ?></td>
+                      
+                      <td> <?php if(mysqli_num_rows( $result1 )==0){ echo "Absent";}else{ echo "Present";} ?> </td>
+                      
+                  
+                      </tr>
+                      
+                      
+                        <?php  
+                      $i++;
+                        }
+                      // echo $row -> id;
+                     // exit();
+                     ?>
+                   </tbody>
+                  
+                  
+                </table>
+  <?php
+ }
+
+
+
+
+
 // ===================add user============================
 if($_REQUEST['action']=="add_user"){
  $query="INSERT INTO `tbl_user`(`id`, `first_name`, `middle_name`, `last_name`, `mobile_no`, `email`, `profile`, `group`, `dob`, `gender`, `address`, `city`, `state`, `zipcode`,`username`,`password`, `image`) VALUES (null,'".$_REQUEST['first_name']."','".$_REQUEST['middle_name']."','".$_REQUEST['last_name']."','".$_REQUEST['mobile_no']."','".$_REQUEST['email']."','".$_REQUEST['profile']."','".$_REQUEST['group']."','".$_REQUEST['dob']."','".$_REQUEST['gender']."','".$_REQUEST['address']."','".$_REQUEST['city']."','".$_REQUEST['state']."','".$_REQUEST['zipcode']."','".$_REQUEST['username']."','".$_REQUEST['password']."','".$_REQUEST['image']."')";
@@ -88,13 +146,13 @@ if($_REQUEST['action']=="del_exercise"){
 }
 // ====================add group=========================
 if($_REQUEST['action']=="add_group"){  
- $query="INSERT INTO `tbl_groups`(`id`,`title`,`link`) VALUES (null,'".$_REQUEST['title']."','".$_REQUEST['link']."')";
+ $query="INSERT INTO `tbl_groups`(`id`,`title`,`link`,`fees`) VALUES (null,'".$_REQUEST['title']."','".$_REQUEST['link']."','".$_REQUEST['fees']."')";
 $result=mysqli_query($con,$query);
 header('location:groups.php');
 }
 // ===================edit group==============================
 if($_REQUEST['action']=="edit_group"){
- $query= "UPDATE `tbl_groups` SET `title`='".$_REQUEST['title']."',`link`='".$_REQUEST['link']."' WHERE id=".$_REQUEST['id'];
+ $query= "UPDATE `tbl_groups` SET `title`='".$_REQUEST['title']."',`link`='".$_REQUEST['link']."',`fees`='".$_REQUEST['fees']."' WHERE id=".$_REQUEST['id'];
  $result=mysqli_query($con,$query);
  header('location:groups.php');
 }

@@ -127,12 +127,7 @@ include("header.php");
             <div class="card-body">
                   
                   <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Weight </label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="inputEmail3" placeholder="KG" name="weight">
-                    </div>
-                  </div>
+                  
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Wt.Before Meal</label>
                     <div class="col-sm-10">

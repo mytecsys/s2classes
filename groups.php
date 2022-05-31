@@ -13,7 +13,7 @@ include("header.php");
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Batches v1</li>
+              <li class="breadcrumb-item active">Batches </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,6 +39,7 @@ include("header.php");
                     <th>Title</th>
                     <th>Link</th>
                     <th>No of Members</th>
+                    <th>Fees</th>
                     <th>Action</th>
                     
                   </tr>
@@ -58,7 +59,12 @@ while($row=$result-> fetch_object()) {
 <td><?php echo $row ->title; ?></td>
 <td><a href="<?php echo $row->link ?>" class="btn btn-success" >Join</a></td>
 <td><?php echo $row1->cnt; ?></td>
-  <td><a onclick="edit_group('<?php echo $row->id ?>','<?php echo $row->title ?>' )" class="btn btn-success"> <i class="fa fa-edit">
+<td><?php echo $row ->fees;  ?></td>
+  <td> <a onclick="view_groups('<?php echo $row->id; ?>' )" class="btn btn-info"> <i class="fa fa-eye">
+    </i></a>
+
+
+    <a onclick="edit_group('<?php echo $row->id ?>','<?php echo $row->title ?>','<?php echo $row->fees ?>' )" class="btn btn-success"> <i class="fa fa-edit">
     </i></a>
    <a class="btn btn-danger" onclick="del_group('<?php echo $row ->id; ?>')">
           <i class="fa fa-trash"></i>
@@ -88,6 +94,7 @@ while($row=$result-> fetch_object()) {
         </div>
         </section>
       </div>
+
     <div class="modal fade" id="add_group">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -112,6 +119,14 @@ while($row=$result-> fetch_object()) {
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Link</label>
                     <div class="col-sm-10">
                     <input type="nav-link" class="form-control" id="link" placeholder="Link" name="link">
+                    </div>
+                  </div>
+               </div>
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Fees</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" id="fees" placeholder="Amount" name="fees">
                     </div>
                   </div>
                </div>
@@ -157,6 +172,14 @@ while($row=$result-> fetch_object()) {
                     </div>
                   </div>
                </div> 
+               <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Fees</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" id="fees_edit" placeholder="Amount" name="fees">
+                    </div>
+                  </div>
+               </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -170,6 +193,42 @@ while($row=$result-> fetch_object()) {
         </div>
         <!-- /.modal-dialog -->
       </div>
+
+<div class="modal fade" id="view_groups">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">View members <span id="view_groups"></span></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+                <div id="view_member_under_batch"></div>
+            
+                
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+            <!-- <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+
+
  <?php 
 include("footer.php");
  ?>
@@ -180,12 +239,34 @@ include("footer.php");
 $('#add_group').modal('show');
    }
 
-   function edit_group(id,title){
+   function view_groups(id){
+      // alert(id);
+      
+      $('#view_groups').modal('show');
+
+       $.ajax({
+      data: {action:"view_member_under_batch",id:id},
+      type: "post",
+      url: "loaddata.php",
+      crossDomain: true,
+      success: function(dataResult){
+          console.log(dataResult)
+          // var abc=  JSON.parse(dataResult)
+          // console.log(abc['outward'][0]['payment'])
+          $('#view_member_under_batch').html(dataResult)
+
+      }
+    });
+    
+    }
+
+   function edit_group(id,title,fees){
     // alert(id)
     // alert(title)
      $('#edit_group').modal('show');
      $('#title_edit').val(title)
       $('#link_edit').val(link)
+      $('#fees_edit').val(fees)
       $('#row_id').val(id)
        }
 
