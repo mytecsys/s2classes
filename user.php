@@ -59,7 +59,7 @@ while($row=$result-> fetch_object()) {
   <td> <?php echo $row ->mobile_no; ?></td>
   <td> <?php echo $row ->email; ?></td>
   
-  <td><a href="" class="btn btn-info"><i class="fa fa-eye"></i></a>
+  <td><a href="view_user.php?id=<?php echo $row->id ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
            
     <a href="edit_user.php?id=<?php echo $row->id ?>" class="btn btn-success"> <i class="fa fa-edit">
     </i></a>
