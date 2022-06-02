@@ -102,10 +102,10 @@ $row1=$result1-> fetch_object();
                         $query="SELECT * FROM tbl_groups ";
                            $result= $con -> query($query);
                            $i=1;
-                            while($row = $result -> fetch_object()){
+                            while($row12 = $result -> fetch_object()){
                         ?>
                        
-                    <option value="<?php echo $row ->id; ?>"><?php echo $row ->title;?></option>
+                    <option value="<?php echo $row12->id; ?>"><?php echo $row12 ->title;?></option>
                     
                     <?php  
                       $i++;
@@ -246,13 +246,13 @@ $row1=$result1-> fetch_object();
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Username<span class="text-danger"> *</span> </label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="username"name="username" value="<?php echo $row->username ?>">
+                      <input type="text" class="form-control" id="username" placeholder="username"name="username" value="<?php echo $row->username ?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Password <span class="text-danger"> *</span></label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword3" placeholder="password" name="password" value="<?php echo $row->password ?>">
+                      <input type="text" class="form-control" id="password" placeholder="password" name="password" value="<?php echo $row->password ?>">
                     </div>
                   </div>
                      <!-- <div class="card-body"> -->

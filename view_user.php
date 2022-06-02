@@ -184,9 +184,9 @@ include("header.php");
                   </thead>
                   <tbody>
                 <?php 
-            echo    $query1="SELECT * FROM `tbl_attendance` where `user_id` = '".$_REQUEST['id']."' order by `id` DESC";   
+                $query1="SELECT * FROM `tbl_attendance` where `user_id` = '".$_REQUEST['id']."' order by `id` DESC";   
            $result1= $con -> query($query1);
-           // $row1 = $result1 -> fetch_object();     
+           $row1 = $result1 -> fetch_object();     
        $i=1;
 
       while($row = $result1 -> fetch_object()){
@@ -196,10 +196,10 @@ include("header.php");
 
                   <tr>
                   
-                      <td><?php echo $i; ?></td>
-                      <td> <?php echo $row ->date('d-m-Y'); ?></td>
+                      <td><?php  echo $i; ?></td>
+                      <td> <?php  echo $row ->date; ?></td>
                       
-                      <td> <?php if(mysqli_num_rows( $result1 )==0){ echo "Absent";}else{ echo "Present";} ?> </td>
+                      <td> <?php  echo "<a class='btn btn-success'> Present </a>" ?> </td>
                       
                   
                       </tr>
@@ -207,7 +207,7 @@ include("header.php");
                       
                         <?php  
                       $i++;
-                        }
+                         }
                       // echo $row -> id;
                      // exit();
                      ?>
